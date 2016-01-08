@@ -1,0 +1,78 @@
+h4,h5,h6 {
+    //@extend %smallcaps;
+    //font-size:1.2em;
+}
+
+label, .label {
+    display:block;
+    //font-size:0.74em; 
+    @extend %smallcaps;
+}
+
+.smaller {
+    font-size:0.8em;
+}
+
+.lowercase {
+    text-transform:lowercase;
+}
+.inline-label { display:inline; }
+
+.acronym {
+    @extend %smallcaps;
+}
+
+.emphatic {
+        @extend %emphatic;
+    }
+
+h1,h2,h3,h4,h5,h6 {
+    position:relative;
+    &.emphatic {
+        @extend %very-emphatic;
+        code {
+            font-weight:inherit;
+        }
+    }
+    > i {
+        &.contextual {
+            position:absolute;
+            left:-1.2em;
+            top:0.2em;
+            opacity:0;
+        }
+    }
+    &:hover {
+        > i {
+            &.contextual {
+                opacity:1;
+            }
+        }
+    }
+}
+
+%monospaced {
+    font-family:monospace, serif;
+}
+
+section {
+    > a {
+        &:hover h3 i.contextual { opacity:1 }
+    }
+}
+
+.honest {
+    text-transform:none;
+}
+
+ul.naked {
+    list-style-type:none;
+}
+
+.untransformable {
+    text-transform:none !important;
+}
+
+.heavy {
+    @extend %heavy;
+}

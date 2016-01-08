@@ -1,0 +1,22 @@
+%above-fold {
+    //position: -webkit-sticky;
+    //@include prefixer(position, sticky, webkit moz spec);
+    //top:-11em;
+    //z-index:$topMost;
+    > .page-wrapper {
+        //padding-bottom:0.35em;
+        padding-bottom:0;
+    }    
+    
+    @extend %dark;
+    
+    @include media($gtMobile) {
+        top:-10.5em;
+        > .page-wrapper {
+            padding-bottom:1em;
+        }    
+    }
+    h4 {
+        margin:0;
+    }
+}

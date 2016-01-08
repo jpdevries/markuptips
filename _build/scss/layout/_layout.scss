@@ -1,0 +1,575 @@
+@import "typography"; 
+
+input,textarea {
+    font-size:1.2em;
+    @include media($gtMobile) {
+        font-size:1em;
+    }
+}
+
+textarea {
+    resize:none;
+}
+
+fieldset {
+    padding-bottom:1em;
+}
+
+button {
+    padding:1em;
+    font-size:0.8em;
+    line-height:1em;
+    text-transform:uppercase;
+}
+
+img {display: block; margin: 0 auto;}
+
+.larger {
+    font-size:1.1em;
+}
+
+%touchless {
+    html.touch & {
+        display:none;
+    }
+}
+
+%touchie {
+    html.no-touch & {
+        display:none;
+    }
+}
+
+/*
+.configure-your-own-voice {
+    .addomant-flex-container {
+        @include media($gtMobile) {
+            //text-align:center;
+        }
+    }    
+}
+*/
+
+.touchless {
+    @extend %touchless;
+}
+
+.touchie {
+    @extend %touchie;
+}
+
+iframe {
+    @include media($mobile) {
+        max-width:100%;
+    }
+}
+
+select {
+    width:100%;
+    @include media($gtMobile) {
+        width:auto;
+    }
+}
+
+@mixin flexible-container() {
+    @include display(flex);
+    .flexible {
+        @include flex(1);
+    }
+}
+
+%flexible-container {
+    @include flexible-container();
+}
+
+.flexible-container {
+    @extend %flexible-container;
+}
+
+.addomant-flex-container {
+    @include media($gtMobile) {
+        @include flexible-container();
+        > * {
+            @include flex(1);
+        }
+    }
+}
+
+.box {
+    h1,h2,h3,h4,h5,h6 {
+        @extend %very-greedy; /* holding mozilla's hand here */
+    }
+}
+
+aside {
+    text-align:center;
+    p {
+        margin-left:auto;
+        margin-right:auto;
+        max-width:67%;
+    }
+}
+
+.hideable {
+    display:none;
+    .expanded &, .open & {
+        display:inherit;
+    }
+}
+
+body > footer {
+    text-align:center;
+}
+
+img {
+    @extend %shrinkable;
+}
+
+table {
+    @extend %very-greedy;
+}
+
+input[type="text"], input[type="url"], input[type="email"], textarea {
+    @extend %very-greedy;
+    padding:0.42em 0.24em;
+}
+
+h1 {
+    code {
+        //padding-left:0.678em;
+        //font-size:0.8em;
+    }
+}
+
+h1,h2,h3,h4,h5,h6 {
+    position:relative;
+    code {
+        font-weight:normal;
+        text-transform:none;    
+    }
+    > .subtle {
+        position:absolute;
+        right:0;
+        top:0.28em;
+        font-size:0.678em;
+    }
+}
+
+blockquote {
+    padding:1em;
+    margin:1em;
+    @include media($gtMobile) {
+        padding:2em 1em;
+    }
+    border-top:1px solid $borderColor;
+    text-align:center;
+    border-bottom:1px solid $borderColor;
+    font-style:italic;
+    body.inverted & {
+        border-color:$white;
+    }
+}
+
+.rainbow-block {
+    margin:2em 0;
+    html.no-touch & {
+        max-height:24em;
+        overflow:auto;
+        @include media($gtMobile) {
+            max-height:64em;
+        }
+    }
+}
+
+.float-labels {
+    label {
+        display:inline;
+    }
+    input[type="radio"] {
+        margin-right:0.4em;
+    }
+}
+
+.horz-nav {
+    @include display(flex);
+    > button {
+        margin-right:1em;
+        &:last-of-type { margin-right:0; }
+    }
+}
+
+pre.subtle {
+    font-size:0.86em;
+    text-align:center;
+}
+
+div.tags {
+    margin-top:1em;
+    ul {
+        @include columns(3 0.5em);
+        @include media($gtMobile) {
+            max-height:6em;
+            overflow-y:auto;
+        }
+    }
+}
+
+.codepath {
+    @extend %outer-container;
+    > pre {
+        float:left;
+    }
+    > .preview {
+        float:right;
+        margin-right:0.2em;
+    }
+}
+
+.horz-flex {
+    margin-top:1em;
+    @include media($gtMobile) {
+        @include display(flex);    
+    }
+    > * {
+        display:block;
+        @include flex(1 0 100%);
+        margin-bottom:0.5em;
+        &:last-of-type { margin-bottom:0 }
+        @include media($gtMobile) {
+            @include flex(1 0 auto);
+            margin-bottom:0;
+            margin-right:1em;
+            &:last-of-type { margin-right:0 }
+        }
+    }
+}
+
+#dashboard {
+    img {
+        @include media($mobile) {
+            width:2.4em;
+        }
+    }
+}
+
+table.breakable { /* https://css-tricks.com/responsive-data-tables/ */
+    overflow:hidden;
+    td:before {
+        display:none;
+        @extend %monospaced;
+    }
+    @include media($breakTable) {
+        display:block;
+        thead,tbody,th,td,tr {
+            display:block;
+        }
+        
+        > tbody {
+            > tr {
+                &.open + .setting-form {
+                    display:block; /* display the setting form for open rows */
+                }
+            }
+        }
+        
+        &.settings-table > tbody > tr.js-hide.setting-form { /* janky */
+            //display:block;
+        }
+    
+    	/* Hide table headers (but not display: none;, for accessibility) */
+    	thead tr { 
+    		position: absolute;
+    		top: -9999px;
+    		left: -9999px;
+    	}
+	
+    	td { 
+    		/* Behave  like a "row" */
+    		border: none;
+    		border-bottom: 1px solid #eee; 
+    		position: relative;
+    		//padding-left: 50%; 
+            width:100%;
+            padding-left:40%;
+            text-align:right;
+    	}
+	
+    	td:before { 
+            display:block;
+    		/* Now like a table header */
+    		position: absolute;
+    		/* Top/left values mimic padding */
+    		top: 6px;
+    		left: 6px;
+    		width: 35%; 
+    		padding-right: 10px; 
+    		white-space: nowrap;
+            font-weight:normal; 
+    	}
+        td {
+            font-weight:bold;
+        }
+        tr.setting-form {
+            td {
+                padding-left:0;
+                font-weight:inherit;
+            }
+        }
+        
+        
+
+
+    }
+}
+
+#focus {
+    padding-top:0.5em;
+    @include display(flex);
+    > .logo {
+        @include flex(0 0 2.125em);
+        padding-right:0.3em;
+        a {
+            display:block;
+            text-align:center;
+        }
+    }
+    > .uber {
+        @include flex(1);
+        @include display(flex);
+        @include media($gtMobile) {
+            padding-right:0.5em;
+        }
+        .searching & {
+            padding-right:0;
+        }
+        > .primary, > .secondary {
+            @include align-items(center);
+            @include display(flex);
+            @include flex-direction(column);
+            @include justify-content(center);
+            &.js-hide {
+                display:none;
+            }
+        }
+        > .primary {
+            @include flex(1 1 auto);
+            padding-right:0;
+            > div {
+                width:100%;
+                padding:0 0.3em 0 0.75em;
+                .searching & {
+                    padding-left:0;
+                }
+                @include media($gtMobile) {
+                    padding:0 0 0 0.3em;
+                }
+                input {
+                    width:100%;
+                    box-sizing:border-box;
+                    @include media($gtMobile) {
+                        font-size:1.2em;
+                    }
+                }
+            }
+            margin:0;
+        }
+        > .secondary {
+            @include flex(0 0 6em);
+            margin-right:0;
+            @include media($gtMobile) {
+                min-width:6em;
+            }
+            button {
+                padding:0 0.5em;
+                @extend %very-greedy;
+            }
+        }
+    }
+}
+
+#above-fold .page-wrapper {
+    padding-left:0.5em;
+    padding-right:0.5em;
+    padding-bottom:0;
+}
+
+%page-wrapper {
+    padding:1em 0 0 0;
+    position:relative;
+    @include media($gtMobile) {
+        padding:1em 2em 0 2em;
+    }
+}
+
+.page-wrapper {
+    @extend %page-wrapper;
+}
+
+.page-wrapper > .settings { /* #janky */
+    position:absolute;
+    top:0.8em;
+    right:0.678em;
+    z-index:100;
+}
+
+.tert-nav {
+    @extend %contextual-nav;
+}
+
+.document-settings__menu-index {
+    input {
+        max-width:6em;
+    }
+}
+
+aside.alert {
+    margin:0.5em auto 1em auto;
+    text-align:center;
+    &.seperated {
+        padding-top:1em;
+        padding-bottom:1em;
+    }
+    .message {
+        margin:0 auto;
+        position:relative;
+        @include media($gtMobile) {
+            max-width:67% !important;
+        }
+        border-radius:0.4em;
+        padding:0.42em 0.42em;
+    }
+}
+
+#focus {
+    @include display(flex);
+}
+
+#focus {
+    padding-top:0.5em;
+    input, button {
+        line-height:1.678em;
+    } 
+    button {
+        padding:0em;
+        font-weight:bold;
+        height:2.8em;
+    }
+}
+
+.feed {
+    h4,h5,h6 {
+        margin-bottom:0;
+    }
+}
+
+button.greedy {
+    padding:0.42em 0;
+}
+
+.visibility-options {
+    input {
+        margin-bottom:0.5em;
+        &:last-of-type { margin:0 }
+    }
+}
+
+.resource-meta-edit {
+    .focus {
+        .primary {
+            @include media($gtMobile) {
+                @include span-columns(8);
+            }
+        }
+        .secondary {
+            @include media($gtMobile) {
+                 @include span-columns(4);
+                 float:right;
+            }
+             
+             .template-select {
+                 @extend %greedy;
+             }
+        }
+    }
+}
+
+.scrolly-list {
+    @include scrollable();
+    @include columns(3 1em);
+    font-size:0.86em;    
+    margin-top:1em;
+    list-style-type:none;
+    li {
+        margin:0;
+    }
+}
+
+#main-nav {
+    position: -webkit-sticky;
+    @include prefixer(position, sticky, webkit moz spec);
+    margin-top:-2px; //#janky
+    top:0;
+    z-index:$topMost;
+    border-bottom:2px solid rgb(60,60,60); 
+    padding:0 0 0 0.5em;
+    @extend %dark;
+    button {
+        min-width:3em;
+        span {
+            @include media($mobile) {
+                display:none;
+            }
+        }
+    }
+    > .focus {
+        max-width:none; /* #janky */
+        padding-bottom:0.3em;
+        html.no-flexbox {
+            .logo {
+                @include span-columns(2);
+                width:48px;
+            }
+            .uber {
+                @include span-columns(10);
+                float:right;
+                .primary {
+                    @include span-columns(10);
+                }
+                button.secondary {
+                    @include span-columns(2);
+                }
+            }
+        }
+        #uber-search input {
+            width:100%;
+            padding:0 0.5em;
+            @include media($gtMobile) {
+                padding:0 1em;
+            }
+            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                /* IE10+ CSS styles go here */
+                padding-top:0.2em;
+                padding-bottom:0.2em;
+                margin-top:0.2em;
+            }
+        }
+    }
+}
+
+.boolean-settings {
+    input {
+        margin-bottom:1em;
+        @include media($gtMobile) {
+            margin-bottom:0;
+        }
+    }
+}
+
+.settings-nav {
+    @extend %outer-container;
+    text-align:right;
+    > a {
+        margin-right:0.2em;
+        &:last-of-type { margin:0 }
+    }
+}

@@ -1,0 +1,99 @@
+@mixin inverted-body() {
+    background:rgb(40,40,40);
+    color:$white;
+    
+    textarea,input {
+        background:$black !important;
+        color:$white;
+    }
+    
+    pre.subtle {
+        color:$white;
+    }
+    
+    #resource-view {
+        background:transparent;
+        table {
+            border-color:rgb(60,60,60);
+        }
+        table, table thead {
+            background:transparent;
+            color:$white;
+        }
+        
+        .grid-nav {
+            background:transparent;
+            color:white;
+        }
+    }
+    
+    .dashbox {
+        .shell {
+            .box {
+                background:$black;
+                color:$white;
+            }
+        }
+    }
+    
+    .dropzone {
+        background:lighten($black,20%);
+        border-color:lighten(lighten($black,20%),12%);
+    }
+    
+    aside.alert .message {
+        background:$black;
+        color:$white;
+        border-color:$white;
+    }
+    
+    table tbody tr:nth-child(even) {
+        background:lighten($black,10%);
+        color:$white;
+    }
+    
+    > footer {
+        color:darken($white,24%);
+    }
+    
+    .tt-dropdown-menu {
+        background:$black;
+        color:$white;
+    }
+    
+    .tt-suggestions {
+        .tt-suggestion {
+            background:$black;
+            &:nth-child(even) {
+                background:ligthen($black,8%);
+                border-color:ligthen($black,16%);
+                //background:transparent;
+                //border-color:transparent;
+            }
+            &:hover, &.tt-cursor {
+                color:rgb(60,60,60);
+                background:$white;
+            }
+        }
+    }
+    
+}
+
+%inverted-body {
+    @include inverted-body;
+}
+
+body {
+    &.inverted {
+        @extend %inverted-body;
+    }
+    &.inverted-when-dim {
+        @include luminosity(dim) {
+            @include inverted-body;
+        }
+    }
+}
+
+body[data-luminosity="dim"] {
+    @include inverted-body;
+}

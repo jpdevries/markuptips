@@ -1,0 +1,159 @@
+.tip {
+    @extend %tip;
+}
+
+.clickable {
+    @extend %clickable;
+}
+
+.greedy {
+    @extend %very-greedy;
+}
+
+.clicky {
+    @extend %very-greedy;
+    @extend %clickable;
+    @include media($gtMobile) {
+        width:auto;
+    }
+}
+
+.very-clicky {
+    @extend %very-greedy;
+    @extend %clickable;
+}
+
+.focus {
+    @extend %focus;
+}
+
+.focus-hard {
+    @extend %focus-hard;
+}
+
+.smallcaps {
+    @extend %smallcaps;
+}
+
+.modmore {
+    color:map-get(map-get($brands,modmore),color);
+    /*&:-webkit-any-link, &:visited {
+        color:map-get(map-get($brands,modmore),color);
+    }*/
+    &:hover {
+        color:map-get(map-get($brands,modmore),orange);
+    }
+}
+
+.lightcaps {
+    @extend %lightcaps;
+}
+
+.sass {
+    color:map-get(map-get($brands,sass),color);
+    &:hover {
+        color:map-get(map-get($brands,sass),blue);
+    }
+    body.inverted & {
+        color:inherit;
+        &:hover {
+            color:inherit;
+        }
+    }
+}
+
+.twitter {
+    color:$twitter; 
+    /*&:-webkit-any-link, &:visited {
+        color:$twitter;     
+    }*/
+    &:hover {
+        color:$twitter;
+    }
+    &.subtle {
+        &:hover {
+            color:$twitter;
+        }
+    }
+}
+
+button.twitter {
+    @include transition(background-color 240ms ease);
+    &:not(:disabled) {
+        background:darken(map-get(map-get($brands,twitter),color),12%);
+        border-color:darken(darken(map-get(map-get($brands,twitter),color),12%),8%);
+        &:hover {
+            background:map-get(map-get($brands,twitter),color);
+            background:darken(darken(map-get(map-get($brands,twitter),color),12%),6%);
+        }
+    }
+    &:hover {
+        color:$white;
+    }
+    color:$white;
+    font-weight:bold;
+    text-transform:lowercase;
+    body.inverted & {
+        background:$black;
+        border-color:$black;
+    }
+
+}
+
+.shell.shell-dangerous{
+    .box {
+        border-color:$danger;
+        color:$danger;
+        h1,h2,h3,h4,h5,h6 {
+            //color:$danger;
+        }
+    }
+}
+
+.nued {
+    @extend %nued;
+}
+
+.dropzone {
+    @extend %dropzone;
+}
+
+.emphatic-link {
+    @extend %emphatic-link;
+}
+
+%apparent-link {
+    text-decoration:underline !important;
+}
+
+.big-button {
+    @extend %big-button;
+}
+
+.code {
+    @extend %code;
+}
+
+.apparent-link {
+    @extend %apparent-link;
+}
+
+#above-fold {
+    @extend %above-fold;
+}
+
+.search-bar {
+    @extend %search-bar;
+}
+
+.media-box {
+    @extend %media-box;
+}
+
+#resource-view {
+    @extend %resource-view;
+}
+
+.unaligned {
+    @extend %unaligned;
+}

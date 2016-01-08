@@ -1,0 +1,686 @@
+.dashbox {
+    @include display(flex);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    @include justify-content(center);
+    .shell {
+        @include flex(1 1 auto);
+        @include display(flex);
+        &.shell-greedy {
+            @include flex(1 0 100%);
+        }
+        &.shell-access-permissions {
+            @include flex(1 0 100%);
+        }
+        &.shell-contexts, &.shell-task-list, &.task-list {
+            @include flex(0 1 auto);
+        }
+        &.shell-task-list {
+            .naked {
+                i {
+                    @extend %clickable;
+                }
+            }
+            > .box {
+                @include display(flex);
+                > ul.naked {
+                    @include flex(1 0 auto);
+                    //font-size:1.2em;
+                }
+                > footer {
+                    @include display(flex);
+                    @include flex(0 0 auto);
+                    border-top:1px solid lighten(rgb(209,209,209),8%);
+                    padding-top:1em;
+                    > input {
+                        @include flex(4 1 auto);
+                        margin-right:0.5em;
+                    }
+                    > button {
+                        width:4em;
+                        @include flex (0 0 auto);
+                        margin-bottom:0;
+                        html.no-js & {
+                            width:6em;
+                            padding-left:0;
+                            padding-right:0;
+                        }
+                    }
+                }
+            }
+        }
+        &.shell-content {
+            width:32em;
+        }
+        &.shell-whos-online {
+            width:28em;
+        }
+        &.shell-news-feed {
+            width:42em;
+        }
+        &.shell-security-feed {
+            width:24em;
+        }
+        &.shell-getresources {
+        }
+        &.shell-publishedon, &.shell-publisheddate, &.shell-unpublishdate {
+            //width:18em;
+            input {
+                display:inline-block;
+                margin-bottom:0;
+                @include media($mobile) {
+                    margin:0 0 1em 0;
+                    display:block;
+                    width:100%;
+                    &.secondary {
+                        //margin-bottom:0;
+                    }
+                }
+            }
+        }
+        &.shell-save {
+            @include media($gtMobile) {
+                padding:2em;
+            }
+            .box {
+                padding:2em;
+            }
+        }
+        &.shell-media {
+            width:32em;
+            min-height:42em;
+            &:not(.expanded) {
+                &.mini .media-box.grid-view {
+                    tbody, thead {
+                        > tr {
+                          > td, > th {
+                              &:nth-of-type(2), &:nth-of-type(3) {
+                                  display:none;
+                              }
+                          }  
+                        }
+                    }
+                    thead {
+                        > tr {
+                            > th {
+                                display:none;
+                            }
+                        }
+                    }
+                }
+            }
+            &.shell-greedy {
+                .media-box {
+                    .table-wrapper {
+                        > table {
+                            @include media($gtMobile) {
+                                @include flex(1 0 auto); 
+                                > tbody {
+                                    html.no-touch & {
+                                        overflow-y:hidden;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .media-box {
+                @include display(flex);
+                @include flex-direction(column);
+                text-align:left;
+                .grid-dep {
+                    display:none;
+                }
+                small {
+                    text-align:left;
+                    display:block;
+                }
+                .table-wrapper {
+                    @include flex(1 0 auto);
+                    @include display(flex);
+                    @include flex-direction(column);
+                    > table {
+                        @include flex(1 0 auto);
+                        //height:20em;
+                        font-size:0.9em;
+                        @include flex-direction(column);
+                        text-align:right;
+                        @include media($gtMobile) {
+                            @include flex(1 0 24em);
+                        }
+                        html.no-touch & {
+                            //max-height:20em;
+                        }
+                        @include display(flex); // watch out now
+                        > thead {
+                            @include flex(0 0 auto);
+                            @include display(flex);
+                            //background:green;
+                            > tr {
+                                @include display(flex);
+                                @include flex(1 0 auto);
+                                > th {
+                                    @include flex(1);
+                                    padding:0.5em;
+                                    &:first-of-type {
+                                        text-align:left;
+                                    }
+                                }
+                            }
+                        }
+                        > tbody {
+                            //@include flex( 0 auto);
+                            @include display(flex);
+                            @include flex-direction(column);
+                            html.no-touch & {
+                                overflow-y:auto;
+                            }
+                            img {
+                                //max-width:100%;
+                                max-height:7em;
+                                margin:0;
+                            }
+                            > tr {
+                                @include display(flex);
+                                @include flex(1 0 auto);
+                                > td {
+                                    @include flex(1);
+                                    @include display(flex);
+                                     @include flex-direction(column);
+                                    padding:0.5em;
+                                    code {
+                                        text-align:right;
+                                    }
+                                    &:first-of-type {
+                                        > div {
+                                            @include display(flex);
+                                            position:relative;
+                                            text-align:left;
+                                            
+                                        }   
+                                        .filename {
+                                            text-align:left; 
+                                            padding:0;
+                                            margin:0.2em 0 0 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }   
+                }
+                &.grid-view {
+                    .grid-dep {
+                        display:inline;
+                    }
+                    .table-wrapper {
+                        > table {
+                            > thead {
+                                > tr {
+                                    > th {
+                                        text-align:right;
+                                        width:12em;
+                                        &:first-of-type {
+                                            @include flex(8);
+                                            width:auto;
+                                        }
+                                    }
+                                }
+                            }
+                            > tbody {
+                                img {
+                                    max-height:none;
+                                    height:auto;
+                                    width:100%;
+                                }
+                                > tr {
+                                    > td {
+                                        text-align:right;
+                                        width:12em;
+                                        display:none;
+                                        &:first-of-type {
+                                            display:inherit;
+                                            @include flex(1 0 100%); 
+                                            text-align:left;
+                                            width:100%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        &.shell-menu-index {
+            width:42em;
+            @include flex-basis(42em);
+        }
+        &.shell-settings {
+            @extend %very-greedy;
+            > section > .focus > .primary {
+                @include media($gtMobile) {
+                    border-right:1px solid rgb(209,209,209);
+                }
+            }
+        }
+        &.shell-new-tv {
+            @include media($gtMobile) {
+                width:28em;
+                @include flex-basis(28em);
+            }
+        }
+        &.shell-new-chunk {
+            @include media($gtMobile) {
+                width:34em;
+                @include flex-basis(34em);
+            }
+        }
+        &.shell-tools, &.shell-tips {
+            h4 {
+                @extend %heavy;
+                code {
+                    font-weight:inherit;
+                }
+            }
+            li {
+                margin-top:1em;
+                margin-bottom:1em;
+                padding-bottom:1em;
+                border-bottom:1px solid lighten(rgb(209,209,209),8%);
+                &:last-of-type {
+                    border-color:transparent;
+                }
+            }
+        }
+        &.shell-users {
+            width:42em;
+            > .box {
+                > section {
+                    @include flex(1 0 auto);
+                    @include display(flex);
+                    @include flex-direction(column);
+                     > table {
+                        @include flex(0 0 auto);
+                    }
+                    table.grid {
+                        @include media($mobile) {
+                            td,th {
+                                display:none;
+                                &:nth-of-type(1),&:nth-of-type(2),&:nth-of-type(3) {
+                                    display:table-cell;
+                                }
+                                &:nth-of-type(3) {
+                                    //text-align:right;
+                                }
+                                &:nth-of-type(4),&:nth-of-type(5) {
+                                    display:none;
+                                }
+                            }
+                        }
+                    }
+                    > form {
+                       &.search-bar {
+                           @include flex(0 0 auto);
+                       }
+                       &.create-user {
+                           @include display(flex);
+                           @include flex-direction(column);
+                           @include flex(1 0 auto);
+                           > div {
+                             @include flex(0 0 auto);
+                             &.boolean-options {
+                                 @include display(flex);
+                                 @include justify-content(center);
+                                 @include flex(4 0 auto);
+                                 > div {
+                                     @include display(flex);
+                                     @include flex-direction(column);
+                                     @include justify-content(center);
+                                     @include flex(1 0 auto);
+                                     text-align:center;
+                                 }
+                             }
+                           }
+                           > table {
+                               @include flex(1 0 auto);
+                           }
+                           > button {
+                             @include flex(0 0 auto);
+                           }
+                       }
+                   }
+                }
+            }
+        }
+        .box {
+            @include display(flex);
+            @include flex-direction(column);
+            @include flex(1 1 42em); /* IE is weird */
+            max-width:100%;
+            > .focus { /* weird chrome thing */
+                width:100%;
+            }
+        }
+    }
+}
+
+.dashbox {
+    hr {
+        border-color:#e5e5e5;
+    }
+    button {
+        @extend %very-greedy;
+        margin-bottom:0.4em;
+    }
+    .shell {
+        @include media($gtMobile) {
+            width:24em;
+            min-width:24em;
+            @include flex-basis(24em);
+        }
+        padding:0.5em;
+        color:rgb(90,90,90);
+        font-size:0.86em;
+        img {
+            margin-top:0;
+            margin-bottom:0;
+        }
+        fieldset {
+            border:none;
+            margin-bottom:0.5em;
+        }
+        textarea.code {
+            font-family: monospace, serif;
+            overflow-y:auto;
+            font-size:0.9em;
+        }
+        .box {
+            @extend %box;
+            nav {
+                p {
+                    padding-left:0.678em;
+                }
+            }
+            .media-streams {
+                position:absolute;
+                right:0.6em;
+                bottom:0.35em;
+                text-align:right;
+            }
+        }
+        ul {
+            margin:0 0 0 1em;
+            padding:0 1em 0 0;
+            li {
+                margin-bottom:0.5em;
+                &:-last-of-type { margin-bottom:0 }
+            }
+        }
+        h1,h2 {
+            margin:0 auto 1em auto;
+            @extend %smallcaps;
+            font-size:1.2em;
+            text-align:center;
+            padding-bottom:0.5em;
+            border-bottom:1px solid lighten(rgb(209,209,209),8%);
+        }
+        h3,h4,h5,h6 {
+            margin:0;
+        }
+        &.recently-edited {
+            table {
+                text-align:right;
+            }
+        }
+        &:last-of-type { margin-right:0 }
+    }
+}
+//http://stackoverflow.com/a/719545
+input[type=checkbox], input[type=radio] {
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+}
+input[type=radio] {
+    bottom: 2px;
+}
+
+div[role='group'] {
+    //@extend fieldset; /* so lame http://stackoverflow.com/a/19687716 */
+    
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+    padding-bottom:1em;
+    border:none;
+    margin-bottom:0.5em;
+}
+
+.dashbox {
+    .shell {
+        &.shell-forum-post, &.shell-twitter, &.shell-quick-create, &.shell-message {
+            .box {
+                div[role='group'] {
+                    padding-left:0;
+                    padding-right:0;
+                }
+                @include media($gtMobile) {
+                    > h2, > p {
+                        @include flex(0 0 auto);
+                    }
+                    > form {
+                        @include display(flex);
+                        @include flex-direction(column);
+                        @include flex(2 0 auto);
+                        > div {
+                            @include display(flex);
+                            @include flex-direction(column);
+                            @include flex(2 0 auto);
+                            > textarea {
+                                @include flex(1 0 auto);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.shell-donate {
+            
+        }
+    }
+}
+
+%flexible {
+    @include display(flex);
+}
+
+.shell-extra {
+    .congrats {
+        @extend %flexible;
+        @include flex-direction(column);
+        @include flex(2 0 auto);
+        @include justify-content(center);
+    }   
+}
+
+.dashbox {
+    .shell {
+        &.shell-quick-create {
+            .box {
+                @include media($gtMobile) {
+                    > form {
+                        > div {
+                            > div[role='group'] { /* so lame http://stackoverflow.com/a/19687716 */
+                                @include flex(1 0 auto);
+                                &:last-of-type {
+                                    @include flex(2 0 auto);
+                                    @include display(flex);
+                                    @include flex-direction(column);
+                                    margin-bottom:0;
+                                    textarea {
+                                        @include flex(1 0 auto);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.dashbox {
+    .shell {
+        &.shell-message {
+            .box {
+                @include media($gtMobile) {
+                    > form {
+                        > br { display:none; }
+                        > div[role='group'] {
+                            margin-bottom:0;
+                        }
+                    }
+                }
+            }
+            button {
+                margin-top:1em;
+                @include align-self(flex-end);
+            }
+        }
+        &.shell-donate {
+            > .box form {
+                > * {
+                }
+                > fieldset {
+                }
+            }
+        }
+    }
+}
+
+.dashbox {
+    .shell {
+        .liquid-form {
+            @include display(flex);
+            @include flex-wrap(wrap);
+            > fieldset {
+                @include flex(1 1 20em);
+                display:block;
+                &.hideable {
+                    display:none;
+                }
+            }
+        }
+        &.expanded {
+            .liquid-form > fieldset.hideable {
+                display:block;
+            }
+        }
+    }
+}
+
+.dashbox {
+    .shell {
+        &.shell-user {
+            h1,h2,h3,h4,h5,h6,button {
+                text-transform:none;
+            }
+            button { font-weight:bold; }
+            aside {
+                p {
+                    max-width:20em;
+                }
+            }
+            .box {
+                @include media($gtMobile) {
+                    padding-bottom:4em;
+                    button {
+                        position:absolute;
+                        bottom:1em;
+                        left:1em;
+                        right:1em;
+                        width:auto;
+                    }
+                }
+            }
+        }
+        &.shell-tags {
+            &.expanded {
+                div.tags ul {
+                    max-height:18em;
+                }
+            }
+        }
+        &.shell-users {
+            thead {
+                text-align:left;
+            }
+        }
+        &.shell-setting, &.shell-access-permissions, &.shell-resource {
+            h1,h2,h3,h4,h5,h6,button {
+                text-transform:none;
+            }
+        }
+        &.shell-setting {
+            textarea {
+                min-height:4em;
+                overflow-y:auto;
+            }
+        }
+        &.shell-twitter {
+            &:hover {
+                .fa-twitter {
+                    color:$twitter; 
+                }
+            }
+        }
+        &.shell-menu-index {
+            .focus {
+                @include media($gtMobile) {
+                    .primary {
+                        @include span-columns(3);
+                    }
+                    .secondary {
+                        @include span-columns(9);
+                    }
+                }
+            }
+            &.expanded {
+                .primary, .secondary {
+                    width:100%;
+                }
+                .scrolly-list {
+                    max-height:none;
+                }
+            }
+        }
+        &.shell-resource-groups {
+            @extend %very-greedy;
+        }
+        &.shell-error-log {
+            @extend %greedy;
+            @include media(min-width 66em 12) {
+                min-width:64em;
+            }
+            @include flex(1 0 auto);
+            textarea {
+                font-family: monospace, serif;
+                //html.no-touch &, html.no-js {
+                    height:32em;
+                    overflow-y:auto; 
+                    //}
+                font-size:0.9em;
+            }
+        }
+        &.shell-readme {
+            @extend %readable;
+        }
+        &.shell-legible {
+            max-width:64em;
+            @include flex-basis(64em);
+        }
+    }
+}

@@ -1,0 +1,329 @@
+@import "straps";
+@import "resource-edit";
+@import "inverted";
+@import "modmoreicons";
+@import "dirty";
+@import "rainbow/themes/github";
+@import "font";
+
+@include placeholder {
+    color:$placeholder;
+}
+
+body {
+    background:$bg;
+    &[data-font-size="large"] {
+        font-size:120%;
+    }
+    &[data-font-size="extralarge"], html.no-js & {
+        font-size:140%;
+    }
+    /*
+    @include luminosity(normal) {
+        background:red;
+    }
+    @include luminosity(dim) {
+        background:purple;
+    }
+    @include luminosity(washed) {
+        background:green;
+    }
+    */
+}
+
+a {
+    color:currentColor;
+}
+
+button {
+    @extend %high-contrast;
+    border:1px solid $black;
+    &:disabled {
+        @extend %inactive;
+    }
+}
+
+table:not(.gist table) {
+    @include pretty-table(); 
+}
+
+button,input[type="text"],input[type="search"],input[type="email"],textarea {
+    border-radius:6px;
+}
+
+input[type="text"],input[type="search"],input[type="email"], textarea {
+    border:1px solid $borderColor;
+}
+
+body > footer {
+    color:lighten($subdued,12%);
+}
+
+a:-webkit-any-link, a:visited {
+    color:inherit;
+    
+}
+
+.play-controls {
+    @include display(flex);
+    @include justify-content(center);
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:-1.8em;
+    z-index:$topMost + 1;
+    background:$black;
+    border-bottom:2px solid rgb(60,60,60);
+    line-height:1.8em;
+    > a {
+    
+    }
+}
+
+.colophon {
+    h4 {
+        a {
+            text-decoration:none;
+        }
+    }
+}
+
+a.subtle-link {
+    text-decoration:none;
+}
+
+.facebook, .facebook:-webkit-any-link, .facebook:visited { 
+    color:$facebook;
+    body.inverted & {
+        color:inherit;
+    }
+}
+
+$selected:#b4c0d6;
+.selected {
+    border-color:$selected !important;
+}
+
+.decorated-link, .decorated-link:visited, .decorated-link:-webkit-any-link {
+    text-decoration:underline;
+}
+
+.helpful-sentence {
+    color:$subdued;
+}
+
+iframe {
+    border:none;
+}
+
+.seperated {
+    border-top:1px solid #e5e5e5;
+}
+
+figure {
+    iframe {
+        border:1px solid $borderColor;
+    }
+}
+
+figcaption {
+    @extend %unaligned;
+    margin-top:1em;
+    font-style:italic;
+}
+
+.play-pause-btn {
+    @extend %clickable;
+}
+
+figure {
+    text-align:center;
+    img, img.unaligned {
+        margin:0 auto; 
+        display:block;
+        border:1px solid $borderColor;
+    }
+}
+
+#listened-to-as-well {
+    @extend %clickable;
+}
+
+.sassmeister-gist, .rainbow-block {
+    body.inverted & {
+        @extend %fully-invertable;
+    }
+}
+
+.subtle {
+    color:lighten($black,48%);
+    //&:-webkit-any-link, &:visited { color:lighten($black,48%); }
+    body.inverted & {
+        color:darken($white,12%);
+    }
+}
+
+h1,h2,h3,h4,h5,h6 {
+    > .subtle {
+        opacity:0;
+        html.touch & { opacity:0.68; }
+    }
+    &:hover {
+        > .subtle { opacity:0.68; }
+    }
+}
+
+%legible {
+    font-size:120%;
+    line-height:1.8em;
+    max-width:72em; 
+}
+
+div.legible, section.legible {
+    p,h1,h2,h3,h4,h5,h6 {
+        @extend %legible;
+    } 
+    ol,ul {
+        @extend %legible;
+        ol,ul {
+        font-size:inherit;    
+        }
+    }
+}
+
+a.rss {
+    @extend %syndicated;
+}
+
+.modmore-logo {
+    font-size:2.4em;
+    color:rgb(220,220,220);
+    body.inverted & {
+        color:$white;
+    }
+}
+
+pre.subtle {
+    color:$subdued;
+}
+
+    .ace-editor { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+.tert-nav {
+    color:lighten($subdued,12%);
+}
+
+time {
+    @extend %code;
+}
+
+%clickable {
+    cursor:pointer;
+}
+
+.clickable {
+    @extend %clickable;
+}
+
+.rss {
+    &:hover,&:focus {
+        color:$rss;
+    }
+    .shell-rss:hover & {
+        color:$rss;
+    }
+}
+
+aside.alert {
+    .message {
+        background:$manilla;
+        color:#B89024;
+        border:1px solid lighten(#B89024,12%);
+    }
+}
+
+#focus {
+    button {
+        background:#539E43;
+        border:1px solid darken(#539E43,20%);
+        @include transition(background 120ms ease);
+        @include transition(border-color 120ms ease);
+        color:rgb(250,250,250);
+        &:hover {
+            background:lighten(#539E43,8%);
+            border:1px solid lighten(darken(#539E43,20%),8%);
+        }
+        &.save {
+            //color:map-get(map-get($brands,modx),green);
+            border:1px solid darken(map-get(map-get($brands,modx),green),8%);
+        }
+        &:disabled {
+            background:rgb(220,220,220);
+            color:rgb(40,40,40);
+        }
+    }
+}
+
+#delete {
+    background:darken($red,18%);
+    border-color:darken(darken($red,18%),8%);
+}
+
+#save-doc {
+    @extend %big-button;
+    @include media($gtMobile) {
+        margin-top:2em;
+    }
+}
+
+.txt-btn, .txt-btn:-webkit-any-link, .txt-btn:visited {
+    border:1px solid darken(rgb(120,120,120),10%);
+    color:rgb(120,120,120);
+    border-radius:0.24em;
+    font-weight:bold;
+    padding:0.24em 0.42em;
+    &:hover {
+        color:rgb(90,90,90);
+        border-color:rgb(90,90,90);
+    }
+}
+
+body > footer {
+    a {
+        &:hover {
+            .fa-slack { color:$slack }
+            .fa-facebook-square { color:$facebook }
+            .fa-twitter { color:$twitter }
+            //.fa-envelope { color:$slack }
+            .fa-html5 { color:$html5 }
+            .fa-github-square { color:$github }
+            .fa-css3 { color:$css3 }
+        }
+    }
+}
+
+%shell-options-list {
+    h3 {
+        margin-bottom:1em;
+        text-transform:none;
+        label {
+            text-transform:inherit;
+            font-size:inherit;
+            font-weight:normal;
+        }
+    }
+}
+
+.dashbox {
+    .shell.shell-fonts, .shell.shell-options-list {
+        @extend %shell-options-list;
+    }
+}
+
+

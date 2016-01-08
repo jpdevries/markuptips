@@ -1,0 +1,160 @@
+// looking for imports? see end of file
+
+%outer-container {
+    @include outer-container(none);
+}
+
+%focus {
+    @extend %outer-container;
+    @include media($gtMobile) {
+        .primary {
+            @include span-columns(6);
+        }
+        .secondary {
+            @include span-columns(6);
+            padding-left:0.5em;
+            float:right;
+        }    
+    }
+} 
+
+%dark {
+    background:rgb(10,10,10);
+    color:rgb(250,250,250);
+}
+
+%focus-hard {
+    @extend %outer-container; 
+    .primary {
+        @include span-columns(6);
+    }
+    .secondary {
+        @include span-columns(6);
+        padding-left:0.5em;
+        float:right;
+    }   
+}
+
+%big-button {
+    padding:0 1em;
+    line-height:4em;
+    font-weight:bold;
+    font-size:inherit;
+    margin-top:1em;
+}
+
+%syndicated {
+    &:hover {
+        color:map-get(map-get($brands,rss),orange);
+    }
+}
+
+%high-contrast {
+    background:$black;
+    color:$white;
+    body.inverted & {
+        border-color:$white;
+    }
+}
+
+%inactive {
+    background:rgb(120,120,120);
+    border-color:rgb(110,110,110);
+    body.inverted & {
+        background:darken(rgb(120,120,120),20%);
+        border-color:darken(darken(rgb(120,120,120),20%),6%);
+    }
+}
+
+%emphatic {
+    font-weight:bold;
+}
+
+%very-emphatic {
+    font-weight:bold !important;
+}
+
+%contextual-nav {
+    position:absolute;
+    top:1em;
+    right:1em;
+}
+
+%nued {
+    margin:0;
+}
+
+%fully-invertable {
+    @include filter(invert(100%));
+}
+
+%media-box {
+    @include display(flex);
+    @include flex(1 1 auto);
+    @include flex-direction(column);
+    @include align-items(stretch);
+    @include justify-content(flex-start);
+    padding-bottom:1em;
+    pre,code { text-align:left; }
+    pre {
+        margin:0;
+    }
+    
+    .toolbar {
+        text-align:right;
+        a {
+            margin-right:0.2em;
+            &:last-of-type { margin-right:0 }
+        }
+    }
+    > header {
+        @include flex(0 1 auto);
+    }
+    > .table-wrapper {
+        @include flex(1 1 100%);
+        //height:100%;
+        //display:block;
+        //margin-top:1em;
+    }
+    .dropzone {
+        @include flex(0 1 auto);
+        //height:18%;
+    }
+}
+
+%readable {
+    p {
+        max-width:72em;
+        line-height:2em;
+    }
+    h1 p { max-width:none; }
+}
+
+%box {
+    background:lighten($bg,8%);
+    border:1px solid darken(lighten($bg,8%),12%);
+    border-radius:0.42em;
+    padding:1em;
+    position:relative;
+}
+
+%heavy {
+    font-weight:bold;
+}
+
+@mixin good-parent() {
+    @include display(flex);
+    > * {
+        @include flex(1 1 0);
+    }
+}
+
+%good-parent {
+    @include good-parent;
+}
+
+
+@import "resource-view";
+@import "above-fold";
+@import "search-bar";
+@import "dashbox";

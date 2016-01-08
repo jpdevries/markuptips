@@ -1,0 +1,12 @@
+config.core.php
+aws-secret.json
+config.core.php
+_build/config.json
+
+.sass-cache
+bower_components
+node_modules
+
+_build/scss/bourbon/
+_build/scss/html5-boilerplate/
+_build/scss/neat/

@@ -1,0 +1,29 @@
+%search-bar {
+    @include display(flex);
+    input {
+        @include flex(1 0 auto);
+    }
+    button {
+        @include flex(0 1 auto);
+    }
+    margin-bottom:1em;
+    input {
+        padding-left:1em;
+        padding-right:1em;
+        font-size:1em;
+        line-height:1em;
+        padding-top:0;
+        padding-bottom:0;
+        margin-right:0.678em;
+    }
+    button {
+        width:8em;
+        line-height:3.2em;
+        height:100%;
+        padding:0;
+        margin:0 !important;
+        html.js & {
+            width:3em;
+        }
+    }
+}

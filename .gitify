@@ -1,0 +1,26 @@
+data_directory: _data/
+data:
+    contexts:
+        class: modContext
+        primary: key
+    content:
+        type: content
+        exclude_keys:
+            - editedby
+            - editedon
+    templates:
+        class: modTemplate
+        primary: templatename
+        extension: .html
+    chunks:
+        class: modChunk
+        primary: name
+        extension: .html
+    snippets:
+        class: modSnippet
+        primary: name
+        extension: .php
+    plugins:
+        class: modPlugin
+        primary: name
+        extension: .php

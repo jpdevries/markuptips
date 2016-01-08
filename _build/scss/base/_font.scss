@@ -1,0 +1,34 @@
+body {
+    &.open-sans, &[data-font="open-sans"] {
+        font-family: 'Open Sans', sans-serif;
+    }
+    &.raleway, &[data-font="raleway"] {
+        font-family: 'Raleway', sans-serif;
+    }
+    &.ubuntu, &[data-font="ubuntu"] {
+        font-family: 'Ubuntu', sans-serif;
+    }
+    /*
+    &.sanfran, &[data-font="sanfran"] {
+        font-family: 'San Francisco Text', sans-serif;
+        h1,h2 {
+            font-family: 'San Francisco Display', sans-serif;
+        }
+    }
+    */
+    &.opendyslexic, &[data-font="opendyslexic"] {
+        font-family: 'opendyslexic';
+        pre,code {
+            font-family: 'opendyslexicmonoregular';
+        }
+    }
+    &.fira, &[data-font="fira"] {
+        font-family: 'Fira Sans';
+        pre,code {
+            font-family: 'Fira Mono';
+        }
+    }
+    &.anonpro, &[data-font="anonpro"] {
+        font-family: 'Anonymous Pro';
+    }
+}

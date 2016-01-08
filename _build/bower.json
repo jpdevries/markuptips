@@ -1,0 +1,62 @@
+{
+  "name": "markuptips",
+  "version": "0.0.1",
+  "author": {
+    "name": "",
+    "url": ""
+  },
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "dependencies": {
+    "html5-boilerplate": "~4.3.0"
+  },
+  "devDependencies": {
+    "bourbon": "~4.2.0",
+    "neat": "~1.7.1",
+    "typeahead.js": "~0.10.5",
+    "mustache.js": "~1.1.0"
+  },
+  "exportsOverride": {
+    "mustache.js": {
+      "": [
+          "mustache.js",
+          "mustache.min.js"
+      ]
+    },
+    "bourbon": {
+      "": "app/assets/stylesheets/"
+    },
+    "neat": {
+      "": "app/assets/stylesheets/"
+    },
+    "typeahead.js": {
+      "": [
+        "./dist/typeahead.bundle.js",
+        "./dist/typeahead.bundle.min.js"
+      ]
+    },
+    "html5-boilerplate": {
+      "css": [
+        "css/main.css",
+        "css/normalize.css"
+      ],
+      "js": [
+        "js"
+      ],
+      "": [
+        "./.htaccess",
+        "./favicon.ico",
+        "./humans.txt",
+        "./index.html",
+        "./robots.txt",
+        "./apple-touch-icon-precomposed.png"
+      ]
+    }
+  }
+}

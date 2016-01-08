@@ -1,0 +1,62 @@
+$bg:rgb(240,240,240);
+$black:rgb(10,10,10);
+$white:rgb(250,250,250);
+$manilla:#F9F5EC;
+$red:#E32929;
+$subdued:rgb(86,86,86);
+$placeholder:gray;
+$green:rgb(14,247,0);
+
+$borderColor:rgb(209,209,209);
+$copy:$black;
+
+$twitter:#55ACEE;
+$html5:#E44C26;
+$css3:#1672B6;
+$facebook:#3b5998;
+$slack:#e30071;
+$github:#333333;
+$danger:darken(red,10%);
+$rss:#FF6700;
+
+$brands:(
+  modx:(
+    color:#1FABD6,
+    blue:#1FABD6,
+    green:#539E43,
+    red:#E32929,
+    orange:#F4874A,
+    lightGreen:#ACCF52,
+    lightBlue:#8FC4E0
+  ),
+  modmore:(
+    color:#1f4a7f,
+    blue:#1f4a7f,
+    orange:#ff8f0d
+ ),
+ sass:(
+    color:#c69,
+    pink:#c69,
+    blue:#036
+ ),
+ facebook:(color:#3b5998),
+ twitter:(color:rgb(85,172,238)),
+ css3:(color:#1672B6),
+ slack:(color:#e30071),
+ github:(color:#333333),
+ googleplus:(color:#dd4b39),
+ instagram:(color:#517fa4),
+ kickstarter:(color:#76cc1e),
+ lanyrd:(color:#152e51),
+ lastfm:(color:#d51007),
+ linkedin:(color:#007bb6),
+ photodrop:(color:#cdb6e3),
+ pinterest:(color:#cb2027),
+ rdio:(color:#0088da),
+ soundcloud:(color:#f60),
+ vimeo:(color:#aad450),
+ youtube:(color:#b00),
+ rss:(color:#FE8F23,orange:#FE8F23)
+);
+
+$breakTable:max-width 480px 1;  

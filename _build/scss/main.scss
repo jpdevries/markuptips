@@ -1,0 +1,199 @@
+@import "bourbon/bourbon";
+@import "grid-settings";
+@import "neat/neat";
+
+@import "html5-boilerplate/main";
+@import "html5-boilerplate/normalize";
+
+@import "spec/tacular";
+
+@import "global/global";
+@import "components/components";
+@import "layout/layout";
+@import "base/base";
+
+html.js {
+    .js-hide {
+        display:none;
+    }
+}
+
+html.no-js {
+    .js-show {
+        display:none;
+    }
+}
+
+%settings-table {
+    background:rgb(242,242,242);
+    body.inverted & {
+        background:transparent;
+    }
+    td,th {
+        padding:0.2em 0.4em;
+    }
+    label {
+        font-size:inherit;
+        text-transform:none;
+    }
+    thead {
+        background:rgb(224,224,224);
+        body.inverted & {
+            background:transparent;
+        }
+        > tr {
+            > th {
+                border:1px solid rgb(200,200,200);
+                body.inverted & {
+                    border-color:transparent;
+                }
+            }
+        }
+    }
+    textarea {
+        font-size:1.2em;
+    }
+    tbody {
+        > tr {
+            > td {
+                border:1px solid rgb(200,200,200);
+                body.inverted & {
+                    border-color:rgb(30,30,30);
+                }
+            }
+            &:nth-of-type(4n-1) {
+                background:rgba(40,40,40,0.1);
+                body.inverted & {
+                    background:rgba(40,40,40,1);
+                }
+            }
+            &.open + .setting-form {
+                display:table-row; /* display the setting form for open rows */
+            }
+            &:focus {
+                html.no-js & {
+                    background:#F2F2C5; /* highlight focused setting for no-js users */
+                }
+                html.no-js body.inverted & {
+                    background:transparent;
+                }
+            }
+        }
+    }
+    .setting-form {
+        html.js & {
+            background:#F2F2C5;
+            &.unhidden {
+                display:table-row;
+                @include media($breakTable) {
+                    display:block;
+                }
+            }
+        }
+        html.js body.inverted & {
+            background:transparent;
+        }
+        text-align:center;
+
+        input {
+        }
+        > td {
+            > div {
+                padding:1em;
+                h1,h2,h3,h4,h5,h6 {
+                    margin-top:0;
+                }
+            }
+        }
+    }
+}
+
+.search-result {
+    a {
+        text-decoration:underline;
+    }
+}
+
+.settings-table, .settings-table-no-js {
+    @extend %settings-table;
+}
+
+.settings-table-no-js {
+    tbody {
+        > tr {
+            &:focus {
+            background:#F2F2C5; /* highlight focused setting for no-js users */
+            }
+        }
+    }
+    .setting-form {
+        html.js & {
+            background:transparent;
+        }
+    }
+}
+
+.button-bar {
+    margin-top:1em;
+}
+
+.monospaced {
+    @extend %monospaced;
+}
+
+.tt-dropdown-menu {
+    background:$bg;
+    color:$black;
+    padding:0;
+    border:2px solid darken($bg,8%);
+    border-top:none;
+    font-size:1.2em;
+    margin-top:0.4em;
+}
+
+#uber-search {
+    .twitter-typeahead, input {
+        width:100%;
+        -webkit-appearance:none;
+    }
+}
+
+span.tt-dropdown-menu {
+    right:0 !important;
+}
+
+.tt-suggestions {
+    .tt-suggestion {
+        margin:0;
+        padding:0.25em 0.5em;
+        border-top:1px solid transparent;
+        border-bottom:1px solid transparent;
+        cursor:pointer;
+        h3 {
+            margin:0;
+        }
+        p {
+            margin:0;
+        }
+        .alias {
+            @extend %code;
+        }
+        &:nth-child(even) {
+            background:darken($bg,8%);
+            border-color:darken($bg,16%);
+        }
+        &:hover, &.tt-cursor {
+            background:$black;
+            color:$white;
+        }
+        .tt-hint {
+            border:none;
+        }
+    }
+}
+
+.github-buttons {
+    @include media($gtMobile) {
+        @include good-parent;
+    }
+}

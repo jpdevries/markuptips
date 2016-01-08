@@ -1,0 +1,21 @@
+.dashbox {
+    .shell-terminal {
+        color:$green;
+        @extend %monospaced;
+        .box {
+            background:$black;
+            //border-color:lighten($black,30%);
+            border-color:darken($green,12%);
+            .nerdy {
+                color:$green;
+                textarea {
+                    @extend %monospaced;
+                    border-color:darken($green,12%);
+                    background:inherit;
+                    color:inherit;
+                    min-height:32em;
+                }
+            }
+        }
+    }
+}

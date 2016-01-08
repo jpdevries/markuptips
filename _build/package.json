@@ -1,0 +1,38 @@
+{
+  "name": "markuptips",
+  "title": "markuptips",
+  "description": "experiment",
+  "version": "0.0.1",
+  "homepage": "",
+  "author": {
+    "name": "JP DeVries",
+    "email": "johnpaul.devries@gmail.com",
+    "url": "http://devries.jp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jpdevries/fopen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jpdevries/fopen/issues"
+  },
+  "devDependencies": {
+    "grunt-aws": "^0.4.0",
+    "grunt-bower-task": "~0.3.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compress": "^0.13.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "^0.4.1",
+    "grunt-contrib-csslint": "^0.1.2",
+    "grunt-contrib-cssmin": "^0.6.2",
+    "grunt-contrib-sass": "^0.5.1",
+    "grunt-contrib-uglify": "^0.2.7",
+    "grunt-contrib-watch": "^0.5.3",
+    "grunt-growl": "~0.1.5",
+    "grunt-shell": "^1.1.2",
+    "grunt-string-replace": "^1.0.0",
+    "grunt-webfont": "^0.5.1",
+    "string-replace": "0.0.1"
+  },
+  "keywords": []
+}
