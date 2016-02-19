@@ -6,27 +6,28 @@ var GridItem = React.createClass({
   render: function() {
     var icon;
     if(this.props.data.is_container) {
-        icon = (this.props.data.conatiner_open) ? 'fa fa-folder-open' : 'fa fa-folder';
+        icon = (this.props.data.conatiner_open) ? 'folder-open' : 'folder';
     } else {
         switch(this.props.data.class_key) {
           case 'modWebLink':
-              icon = 'fa fa-link';
+              icon = 'link';
           break;
-      
+
           default:
-              icon = (this.props.data.linkattributes) ? ('fa ' + 'fa-' + (this.props.data.linkattributes)) : 'fa fa-file-text-o'
+              icon = (this.props.data.linkattributes) ? ((this.props.data.linkattributes)) : 'file-text-o'
           break;
-        }        
+        }
     }
-    
+
     //var titleAttr = "ID: " + this.props.data.id + "; " + "Published";
     var cur = (this.props.data.id == MODx.resource.id) ? true : false;
     var link = (cur) ? <a href={this.props.data.href}><strong>{decodeHTML(this.props.data.title)}</strong></a> : <a href={this.props.data.href}>{decodeHTML(this.props.data.title)}</a>;
     var publishedOn = (this.props.data.publishedon) ? new Date(this.props.data.publishedon).toLocaleDateString() : ' ';
+    var xlinkHref = ((inlineSVGIcons) ? '' : 'assets/img/icons.svg') + '#icon-' + icon;
     return (
         <tr>
-            <td> 
-              <i onClick={this.handleClick} className={icon}></i>&nbsp;
+            <td>
+              <svg onClick={this.handleClick} className="icon"><use xlinkHref={xlinkHref}></use></svg>&nbsp;
               {link}
             </td>
             <td>{decodeHTML(this.props.data.introtext)}</td>
@@ -60,11 +61,11 @@ var Grid = React.createClass({
               //console.log('error');
           }.bind(this)
         });
-        
+
         /*
         var previewClicked = function(e){
             e.preventDefault();
-            $('body').toggleClass('inverted');    
+            $('body').toggleClass('inverted');
         };
         */
         //$('a.preview').unbind('click',previewClicked).bind('click',previewClicked);
@@ -85,7 +86,7 @@ var Grid = React.createClass({
         return (
             <div>
               <h4>
-                <i className="fa fa-code"></i>&nbsp;<code>markup.tips</code>
+                <a href="http://markup.tips"><code>markup.tips</code></a>
                 <div className="codepath">
                     <pre title="Imagine this is interactive, terminal like with tab-to-complete">{this.state.path.map(function(item, i){
                         return (
@@ -111,7 +112,7 @@ var Grid = React.createClass({
                         <GridItem handleClick={that.handleClick} data={item} key={context + item.id} ref={'item'+i} ></GridItem>
                     );
                 })}
-              </tbody>        
+              </tbody>
               </table>
             </div>
         );
@@ -119,7 +120,7 @@ var Grid = React.createClass({
 });
 
 var b = '0';
-try { b = MODx.tree.branch; } catch (e) {} 
+try { b = MODx.tree.branch; } catch (e) {}
 var j = $('#resource-view-reactable').data('fetch') + b;
 React.render(<Grid url={j} />, document.getElementById('resource-view-reactable'));
 
@@ -131,8 +132,8 @@ var TodoList = React.createClass({
   render: function() {
   var that = this;
     var createItem = function(item,i) {
-        var icon = 'fa ' + ((item.done) ? 'fa-check-circle-o' : 'fa-circle-o');
-        return <li onClick={that.itemClicked.bind(that,i)}><p><i className={icon}></i>&nbsp;{item.text}</p></li>;
+        var icon = ((inlineSVGIcons) ? '' : 'assets/img/icons.svg') + ((item.done) ? '#icon-check-circle-o' : '#icon-circle-o');
+        return <li onClick={that.itemClicked.bind(that,i)}><p><svg className="icon"><use xlinkHref={icon}></use></svg>&nbsp;{item.text}</p></li>;
     };
     return <ul className="naked">{this.props.items.map(createItem)}</ul>;
   }
@@ -158,14 +159,15 @@ var TodoApp = React.createClass({
   },
   render: function() {
       var _disabled = this.state.text == '' ? true : false;
+      var xLinkHref = ((inlineSVGIcons) ? '' : 'assets/img/icons.svg') + '#icon-circle-o';
     return (
         <form className="box" onSubmit={this.addItem}>
-            <h2 id="task-list"><i className="fa fa-circle-o"></i><br />Task List</h2>
+            <h2 id="task-list"><svg className="icon"><use xlinkHref="{xLinkHref}"></use></svg><br />Task List</h2>
             <TodoList items={this.state.items} handleItemClicked={this.handleItemClicked} />
             <footer className="add-item">
                 <input required ref="TaskTitle" type="text" name="text" onChange={this.onChange} value={this.state.text} placeholder="Add a new item&hellip;" />
                 <button disabled={_disabled} type="submit">
-                    <i className="fa fa-plus"></i>
+                    <svg className="icon"><use xlinkHref="#icon-plus"></use></svg>
                 </button>
             </footer>
         </form>

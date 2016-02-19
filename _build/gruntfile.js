@@ -21,6 +21,10 @@ module.exports = function(grunt) {
 			img: 'img/',
 			font: 'font/'
 		},
+    options:{
+      cssVer:grunt.option('cssVer'),
+      jsVer:grunt.option('jsVer')
+    },
 		bower: {
 			install: {
 				options: {
@@ -44,29 +48,29 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-        webfont: {
-            icons: {
-                src: './icons/*.svg',
-                dest: '<%= dirs.theme %><%= dirs.assets %><%= dirs.font %>',
-                destCss:'<%= dirs.scss %>base/',
-                options: {
-                    font:'modmoreicons',
-                    hashes:true,
-                    engine:'node',
-                    destHtml:'<%= dirs.theme %><%= dirs.assets %><%= dirs.font %>',
-                    relativeFontPath: '../<%= dirs.font %>',
-                    //template:'<%= dirs.icons %>bem.css',
-                    htmlDemo:true,
-                    htmlDemoTemplate:'<%= dirs.icons %>demo.html',
-                    templateOptions:{
-                        baseClass: "mm",
-                        classPrefix: "mm-",
-                        mixinPrefix: "mm_",
-                        stylesheet:'scss'
-                    }
+    webfont: {
+        icons: {
+            src: './icons/*.svg',
+            dest: '<%= dirs.theme %><%= dirs.assets %><%= dirs.font %>',
+            destCss:'<%= dirs.scss %>base/',
+            options: {
+                font:'modmoreicons',
+                hashes:true,
+                engine:'node',
+                destHtml:'<%= dirs.theme %><%= dirs.assets %><%= dirs.font %>',
+                relativeFontPath: '../<%= dirs.font %>',
+                //template:'<%= dirs.icons %>bem.css',
+                htmlDemo:true,
+                htmlDemoTemplate:'<%= dirs.icons %>demo.html',
+                templateOptions:{
+                    baseClass: "mm",
+                    classPrefix: "mm-",
+                    mixinPrefix: "mm_",
+                    stylesheet:'scss'
                 }
             }
-        },
+        }
+    },
 		sass: {
 			dist: {
 				options: {
@@ -89,7 +93,6 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-
 		csslint: {
 			strict: {
 				options: {
@@ -98,13 +101,10 @@ module.exports = function(grunt) {
 				src: ['<%= dirs.theme %><%= dirs.assets %><%= dirs.css %>**/*.css']
 			}
 		},
-
 		concat: {
 			options: {
 				separator: '',
-			}
-
-			,
+			},
 			js: {
 				src: [
                     '<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>vendor/mustache.js',
@@ -124,12 +124,29 @@ module.exports = function(grunt) {
 					report: 'min'
 				},
 				files: {
-					'<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>main-min.js': ['<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>main-dev.js'],
+					'<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>main-min.<%= options.jsVer %>.js': ['<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>main-dev.js'],
                     '<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>drivers/react/react.min.js': ['<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>drivers/react/react.js']
 				}
 
 			}
 		},
+    babel: {
+      options: {
+        plugins: ['transform-react-jsx'],
+        presets: ['es2015', 'react']
+      },
+      jsx: {
+        files: [{
+          expand: true,
+          cwd: 'js/drivers/react/', // Custom folder
+          src: ['*.jsx'],
+          dest: '<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>drivers/react/', // Custom folder
+          ext: '.js'
+        }]
+      }
+    },
+
+
         compress: {
           css: {
             options: {
@@ -146,6 +163,23 @@ module.exports = function(grunt) {
             dest: '<%= dirs.theme %><%= dirs.assets %><%= dirs.js %>main-min.' + (grunt.option('jsVer')) + '.jsgz'
           }
         },
+    svgstore: {
+      icons: {
+        files: {
+          '<%= dirs.theme %><%= dirs.assets %><%= dirs.img %>icons.svg': ['<%= dirs.theme %><%= dirs.assets %><%= dirs.img %>src/svg/*.svg']
+        },
+        options: {
+          formatting : {
+            indent_size : 2
+          },
+          prefix: 'icon-',
+          cleanup: true,
+          convertNameToId: function(name) {
+            return name.replace(/^\w+\_/, '');
+          }
+        }
+      }
+    },
 		watch: { /* trigger tasks on save */
 			options: {
 				livereload: true
@@ -168,18 +202,7 @@ module.exports = function(grunt) {
 			prebuild: ['<%= dirs.scss %>bourbon', '<%= dirs.scss %>font-awesome'],
 			postbuild: ['<%= dirs.lib %>']
 		},
-        shell: {
-            jsx: {
-                command:'jsx js/drivers/react/ <%= dirs.theme %><%= dirs.assets %><%= dirs.js %>drivers/react/',
-                options: {
-                    execOptions:{
-                        cwd:'./'
-                    }
-                }
-            }
-        },
 		growl: { /* optional growl notifications requires terminal-notifer: gem install terminal-notifier */
-
 			sass: {
 				message: "Sass files created.",
 				title: "grunt"
@@ -244,6 +267,13 @@ module.exports = function(grunt) {
 			expand: true
 		}]
 	};
+
+  initConfig.copy["font-awesome-svg-png-svg"] = {
+    src: ['<%= dirs.lib %>/font-awesome-svg-png/svg/*.svg','<%= dirs.icons %>*.svg'],
+    dest: '<%= dirs.theme %><%= dirs.assets %><%= dirs.img %>src/svg/',
+    expand: true,
+    flatten: true
+  };
 
     if(grunt.file.isFile('./config.json')) {
         initConfig.bump = {
@@ -338,20 +368,21 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-csslint');
 
-    grunt.loadNpmTasks('grunt-string-replace');
-    grunt.renameTask('string-replace','bump');
+  grunt.loadNpmTasks('grunt-string-replace');
+  grunt.renameTask('string-replace','bump');
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-webfont');
-    grunt.loadNpmTasks('grunt-aws');
-    grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-aws');
+  grunt.loadNpmTasks('grunt-svgstore');
+  grunt.loadNpmTasks('grunt-babel');
 
 
 	grunt.registerTask('default', ['growl:watch', 'watch']);
-	grunt.registerTask('build', ['clean:prebuild', 'bower', 'copy', 'sass:dev', 'cssmin', 'concat', 'uglify', 'growl:sass', 'clean:postbuild']);
+	grunt.registerTask('build', ['clean:prebuild', 'bower', 'copy', 'sass:dev', 'cssmin','babel', 'concat', 'uglify', 'growl:sass', 'clean:postbuild']);
 	grunt.registerTask('expand', ['sass:dev', 'growl:sass', 'growl:expand']);
-    grunt.registerTask('s3gz',['compress','s3:cssgz','s3:jsgz'])
-    grunt.registerTask('jsx',['shell:jsx'])
+  grunt.registerTask('s3gz',['compress','s3:cssgz','s3:jsgz']);
+  grunt.registerTask('jsx',['babel']);
 };

@@ -20,7 +20,8 @@
     "bourbon": "~4.2.0",
     "neat": "~1.7.1",
     "typeahead.js": "~0.10.5",
-    "mustache.js": "~1.1.0"
+    "mustache.js": "~1.1.0",
+    "Font-Awesome-SVG-PNG": "font-awesome-svg-png#~1.1.2"
   },
   "exportsOverride": {
     "mustache.js": {
@@ -40,6 +41,10 @@
         "./dist/typeahead.bundle.js",
         "./dist/typeahead.bundle.min.js"
       ]
+    },
+    "Font-Awesome-SVG-PNG": {
+      "svg": "black/svg",
+	  "png": "black/png/128/"
     },
     "html5-boilerplate": {
       "css": [

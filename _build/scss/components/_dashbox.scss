@@ -97,7 +97,7 @@
                               &:nth-of-type(2), &:nth-of-type(3) {
                                   display:none;
                               }
-                          }  
+                          }
                         }
                     }
                     thead {
@@ -114,7 +114,7 @@
                     .table-wrapper {
                         > table {
                             @include media($gtMobile) {
-                                @include flex(1 0 auto); 
+                                @include flex(1 0 auto);
                                 > tbody {
                                     html.no-touch & {
                                         overflow-y:hidden;
@@ -197,10 +197,10 @@
                                             @include display(flex);
                                             position:relative;
                                             text-align:left;
-                                            
-                                        }   
+
+                                        }
                                         .filename {
-                                            text-align:left; 
+                                            text-align:left;
                                             padding:0;
                                             margin:0.2em 0 0 0;
                                         }
@@ -208,7 +208,7 @@
                                 }
                             }
                         }
-                    }   
+                    }
                 }
                 &.grid-view {
                     .grid-dep {
@@ -241,7 +241,7 @@
                                         display:none;
                                         &:first-of-type {
                                             display:inherit;
-                                            @include flex(1 0 100%); 
+                                            @include flex(1 0 100%);
                                             text-align:left;
                                             width:100%;
                                         }
@@ -252,7 +252,7 @@
                     }
                 }
             }
-            
+
         }
         &.shell-menu-index {
             width:42em;
@@ -422,6 +422,7 @@
         h1,h2 {
             margin:0 auto 1em auto;
             @extend %smallcaps;
+            text-transform:none;
             font-size:1.2em;
             text-align:center;
             padding-bottom:0.5em;
@@ -450,7 +451,7 @@ input[type=radio] {
 
 div[role='group'] {
     //@extend fieldset; /* so lame http://stackoverflow.com/a/19687716 */
-    
+
     margin: 0 2px;
     padding: 0.35em 0.625em 0.75em;
     padding-bottom:1em;
@@ -487,7 +488,7 @@ div[role='group'] {
             }
         }
         &.shell-donate {
-            
+
         }
     }
 }
@@ -502,7 +503,7 @@ div[role='group'] {
         @include flex-direction(column);
         @include flex(2 0 auto);
         @include justify-content(center);
-    }   
+    }
 }
 
 .dashbox {
@@ -633,7 +634,7 @@ div[role='group'] {
         &.shell-twitter {
             &:hover {
                 .fa-twitter {
-                    color:$twitter; 
+                    color:$twitter;
                 }
             }
         }
@@ -670,7 +671,7 @@ div[role='group'] {
                 font-family: monospace, serif;
                 //html.no-touch &, html.no-js {
                     height:32em;
-                    overflow-y:auto; 
+                    overflow-y:auto;
                     //}
                 font-size:0.9em;
             }

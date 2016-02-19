@@ -1,7 +1,7 @@
 @import "straps";
 @import "resource-edit";
 @import "inverted";
-@import "modmoreicons";
+//@import "modmoreicons";
 @import "dirty";
 @import "rainbow/themes/github";
 @import "font";
@@ -44,7 +44,7 @@ button {
 }
 
 table:not(.gist table) {
-    @include pretty-table(); 
+    @include pretty-table();
 }
 
 button,input[type="text"],input[type="search"],input[type="email"],textarea {
@@ -61,7 +61,7 @@ body > footer {
 
 a:-webkit-any-link, a:visited {
     color:inherit;
-    
+
 }
 
 .play-controls {
@@ -76,7 +76,7 @@ a:-webkit-any-link, a:visited {
     border-bottom:2px solid rgb(60,60,60);
     line-height:1.8em;
     > a {
-    
+
     }
 }
 
@@ -92,7 +92,7 @@ a.subtle-link {
     text-decoration:none;
 }
 
-.facebook, .facebook:-webkit-any-link, .facebook:visited { 
+.facebook, .facebook:-webkit-any-link, .facebook:visited {
     color:$facebook;
     body.inverted & {
         color:inherit;
@@ -139,7 +139,7 @@ figcaption {
 figure {
     text-align:center;
     img, img.unaligned {
-        margin:0 auto; 
+        margin:0 auto;
         display:block;
         border:1px solid $borderColor;
     }
@@ -176,17 +176,17 @@ h1,h2,h3,h4,h5,h6 {
 %legible {
     font-size:120%;
     line-height:1.8em;
-    max-width:72em; 
+    max-width:72em;
 }
 
 div.legible, section.legible {
     p,h1,h2,h3,h4,h5,h6 {
         @extend %legible;
-    } 
+    }
     ol,ul {
         @extend %legible;
         ol,ul {
-        font-size:inherit;    
+        font-size:inherit;
         }
     }
 }
@@ -207,7 +207,7 @@ pre.subtle {
     color:$subdued;
 }
 
-    .ace-editor { 
+    .ace-editor {
         position: absolute;
         top: 0;
         right: 0;
@@ -325,5 +325,3 @@ body > footer {
         @extend %shell-options-list;
     }
 }
-
-
