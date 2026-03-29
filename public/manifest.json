@@ -1,0 +1,9 @@
+{
+  "name": "markup.tips",
+  "short_name": "markup.tips",
+  "description": "Performance-first, accessibility-first web standards patterns",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f4f5",
+  "theme_color": "#18181b"
+}

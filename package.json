@@ -1,0 +1,22 @@
+{
+  "name": "markuptips",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Performance-first, accessibility-first web standards patterns",
+  "author": "JP DeVries <johnpaul.devries@gmail.com>",
+  "scripts": {
+    "dev": "rex dev",
+    "build": "rex build",
+    "export": "rex export",
+    "start": "rex start"
+  },
+  "dependencies": {
+    "@limlabs/rex": "^0.20.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

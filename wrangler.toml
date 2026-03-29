@@ -1,0 +1,6 @@
+name = "markuptips"
+compatibility_date = "2024-12-01"
+
+[assets]
+directory = "./.rex/export"
+not_found_handling = "single-page-application"
