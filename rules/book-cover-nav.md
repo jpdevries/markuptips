@@ -1,3 +1,17 @@
+---
+type: Rule
+title: "Book-Cover Nav"
+description: "Full-viewport mobile nav, no hamburger, #stage scroll"
+tags: [navigation, mobile, css]
+icon: BookOpen
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+sources:
+  - id: pantry-host
+    resource: https://github.com/jpdevries/pantry-host
+    title: pantry-host reference implementation
+    author: human:jpdevries
+---
 # Book-Cover Nav
 Full-viewport mobile nav that acts as a cover page. No hamburger. Content scrolls past it via `#stage`.
 

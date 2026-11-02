@@ -1,3 +1,17 @@
+---
+type: Rule
+title: "Trusted Network Access"
+description: "Owner vs guest on self-hosted apps, Tailscale + LAN ranges"
+tags: [security, self-hosted, network]
+icon: ShieldCheck
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+sources:
+  - id: pantry-host
+    resource: https://github.com/jpdevries/pantry-host
+    title: pantry-host reference implementation
+    author: human:jpdevries
+---
 # Trusted Network Access
 Owner vs guest on a self-hosted app. Localhost and HTTPS = owner. LAN HTTP = guest (read-only).
 Tailscale CGNAT and mDNS hostnames are trusted networks but not owners.

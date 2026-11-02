@@ -1,3 +1,17 @@
+---
+type: Rule
+title: "Focus Rings"
+description: "Layered box-shadow rings, forced-colors safe"
+tags: [accessibility, focus, css, forced-colors]
+icon: CircleDashed
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+sources:
+  - id: pantry-host
+    resource: https://github.com/jpdevries/pantry-host
+    title: pantry-host reference implementation
+    author: human:jpdevries
+---
 # Focus Rings
 Layered `box-shadow` focus rings that work on any background color. High contrast mode switches
 to solid `outline`. Forced-colors mode maps to the system `Highlight` keyword.

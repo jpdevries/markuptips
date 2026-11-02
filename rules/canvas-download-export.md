@@ -1,3 +1,17 @@
+---
+type: Rule
+title: "Canvas + <a download> Export"
+description: "<canvas> to data URI to <a download> — no server needed"
+tags: [canvas, download, client-side]
+icon: DownloadSimple
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+sources:
+  - id: pantry-host
+    resource: https://github.com/jpdevries/pantry-host
+    title: pantry-host reference implementation
+    author: human:jpdevries
+---
 # Canvas + `<a download>` Export
 Generate files entirely in the browser — no server endpoint, no upload, no backend.
 `<canvas>` converts images to base64. `<a download>` triggers the save dialog.

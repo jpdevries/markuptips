@@ -1,3 +1,17 @@
+---
+type: Rule
+title: "Offline Mutation Queue"
+description: "localStorage queue, ordered flush, startup replay"
+tags: [offline, localstorage, sync]
+icon: CloudSlash
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+sources:
+  - id: pantry-host
+    resource: https://github.com/jpdevries/pantry-host
+    title: pantry-host reference implementation
+    author: human:jpdevries
+---
 # Offline Mutation Queue
 Queue mutations to localStorage when offline. Flush in timestamp order on reconnection.
 Flush also on app startup — connectivity may have returned since the last session.

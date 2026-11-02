@@ -8,7 +8,9 @@
     "dev": "rex dev",
     "build": "rex build",
     "export": "rex export",
-    "start": "rex start"
+    "start": "rex start",
+    "sync:rules": "node scripts/sync-rules.mjs",
+    "check:rules": "node scripts/sync-rules.mjs --check"
   },
   "dependencies": {
     "@limlabs/rex": "^0.20.0",
@@ -17,6 +19,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "yaml": "^2.9.1"
   }
 }

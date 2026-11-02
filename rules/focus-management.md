@@ -1,3 +1,17 @@
+---
+type: Rule
+title: "Focus Management"
+description: "autoFocus, scroll-mt, #stage as skip-link replacement"
+tags: [accessibility, focus, keyboard]
+icon: NavigationArrow
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+sources:
+  - id: pantry-host
+    resource: https://github.com/jpdevries/pantry-host
+    title: pantry-host reference implementation
+    author: human:jpdevries
+---
 # Focus Management
 Move focus intentionally when the UI changes. Prevent focus traps. Use `#stage` as a skip-link
 replacement. Use `scroll-mt` to keep targets visible below sticky headers.

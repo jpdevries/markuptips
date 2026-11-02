@@ -1,3 +1,17 @@
+---
+type: Rule
+title: "Service Worker Strategies"
+description: "Per-request caching strategies, response.ok guard, timestamp cleanup"
+tags: [service-worker, caching, offline, performance]
+icon: HardDrives
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+sources:
+  - id: pantry-host
+    resource: https://github.com/jpdevries/pantry-host
+    title: pantry-host reference implementation
+    author: human:jpdevries
+---
 # Service Worker Caching Strategies
 Match the caching strategy to the request type. Never use a single strategy for everything.
 Guard every cache write with `response.ok` — a cached 404 or 5xx is worse than no cache.
