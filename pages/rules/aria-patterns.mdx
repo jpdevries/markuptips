@@ -1,3 +1,17 @@
+---
+type: Rule
+title: "ARIA Patterns"
+description: "aria-current, aria-pressed, aria-describedby, live regions"
+tags: [accessibility, aria]
+icon: HandPointing
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+sources:
+  - id: pantry-host
+    resource: https://github.com/jpdevries/pantry-host
+    title: pantry-host reference implementation
+    author: human:jpdevries
+---
 # ARIA Patterns
 Practical ARIA for interactive components. Use the right role/attribute for the right job.
 Never add ARIA that duplicates native semantics — first reach for the correct HTML element.

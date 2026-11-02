@@ -1,3 +1,17 @@
+---
+type: Rule
+title: "CSS Token Theming"
+description: "CSS custom property tokens, data-* cascade, dark/high-contrast"
+tags: [css, theming, tokens, dark-mode, high-contrast]
+icon: Palette
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+sources:
+  - id: pantry-host
+    resource: https://github.com/jpdevries/pantry-host
+    title: pantry-host reference implementation
+    author: human:jpdevries
+---
 # CSS Token Theming
 All colors via `--color-*` custom properties. `data-*` attributes on `<body>` control the cascade.
 Never hard-code a Tailwind color utility for a semantic color.

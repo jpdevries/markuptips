@@ -1,3 +1,17 @@
+---
+type: Rule
+title: "System Font Stacks"
+description: "Zero-download typography, no Google Fonts"
+tags: [typography, performance, privacy]
+icon: TextAa
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+sources:
+  - id: pantry-host
+    resource: https://github.com/jpdevries/pantry-host
+    title: pantry-host reference implementation
+    author: human:jpdevries
+---
 # System Font Stacks
 Use the device's own fonts. No external requests, no layout shift, no privacy leak, no CDN dependency.
 Three stacks: sans-serif, serif, monospace — sourced from systemfontstack.com.

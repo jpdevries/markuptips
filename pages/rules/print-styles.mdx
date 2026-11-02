@@ -1,3 +1,17 @@
+---
+type: Rule
+title: "Print Styles"
+description: "Printable documents — hide chrome, show URLs, collapse heroes"
+tags: [print, css]
+icon: Printer
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+sources:
+  - id: pantry-host
+    resource: https://github.com/jpdevries/pantry-host
+    title: pantry-host reference implementation
+    author: human:jpdevries
+---
 # Print Styles
 Every page is a potential printout. Strip navigation chrome, force readable contrast,
 show link URLs, and prevent awkward page breaks — without a separate stylesheet.

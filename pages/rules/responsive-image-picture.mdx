@@ -1,3 +1,17 @@
+---
+type: Rule
+title: "Responsive Image <picture>"
+description: "<picture> with monochrome + WebP + JPEG, CLS prevention"
+tags: [images, performance, cls]
+icon: Image
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+sources:
+  - id: pantry-host
+    resource: https://github.com/jpdevries/pantry-host
+    title: pantry-host reference implementation
+    author: human:jpdevries
+---
 # Responsive Image `<picture>`
 Three `<source>` elements in priority order: monochrome (e-ink) → WebP → JPEG fallback.
 Width descriptors + `sizes` for responsive selection. Explicit dimensions prevent CLS.

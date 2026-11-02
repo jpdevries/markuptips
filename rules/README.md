@@ -1,26 +1,24 @@
+---
+type: Reference
+title: About these rules
+description: What the rules are, where they come from, and the philosophy behind them
+tags: [about]
+status: stable
+generated: { by: human:jpdevries, at: 2026-03-29T04:16:06-07:00 }
+---
 # markup.tips — Web Standards Rules for Agents
+
+## Summary
 
 Performance-first, accessibility-first patterns for building modern web UIs.
 Each file is a self-contained rule an agent can apply without reading a full codebase.
 
 Lighthouse 97 is not an accident. These patterns compound.
 
-## Rules
-
-| File | Pattern |
-|------|---------|
-| [book-cover-nav.md](book-cover-nav.md) | Full-viewport mobile nav, no hamburger, `#stage` scroll |
-| [css-token-theming.md](css-token-theming.md) | CSS custom property tokens, `data-*` cascade, dark/high-contrast |
-| [focus-rings.md](focus-rings.md) | Layered box-shadow rings, forced-colors safe |
-| [responsive-image-picture.md](responsive-image-picture.md) | `<picture>` with monochrome + WebP + JPEG, CLS prevention |
-| [service-worker-strategies.md](service-worker-strategies.md) | Per-request caching strategies, `response.ok` guard, timestamp cleanup |
-| [canvas-download-export.md](canvas-download-export.md) | `<canvas>` → data URI → `<a download>` — no server needed |
-| [aria-patterns.md](aria-patterns.md) | `aria-current`, `aria-pressed`, `aria-describedby`, live regions |
-| [focus-management.md](focus-management.md) | `autoFocus`, `scroll-mt`, `#stage` as skip-link replacement |
-| [trusted-network-access.md](trusted-network-access.md) | Owner vs guest on self-hosted apps, Tailscale + LAN ranges |
-| [offline-mutation-queue.md](offline-mutation-queue.md) | localStorage queue, ordered flush, startup replay |
-| [system-font-stacks.md](system-font-stacks.md) | Zero-download typography, no Google Fonts |
-| [print-styles.md](print-styles.md) | Printable documents — hide chrome, show URLs, collapse heroes |
+This directory is an [Open Knowledge Format](https://github.com/GoogleCloudPlatform/open-knowledge-format)
+v0.2 bundle. [index.md](index.md) lists every rule with its one-line description;
+[log.md](log.md) records the bundle's history. Each rule is a `type: Rule` concept whose
+frontmatter carries its title, description, tags, status, and provenance.
 
 ## Reference Implementation
 
